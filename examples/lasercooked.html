@@ -3,6 +3,8 @@
 <script src='../threex.laserbeam.js'></script>
 <script src='../threex.lasercooked.js'></script>
 <body style='margin: 0px; background-color: #bbbbbb; overflow: hidden;'><script>
+	var texloader = new THREE.TextureLoader();
+	var texture = texloader.load('../images/blue_particle.jpg');
 	var renderer	= new THREE.WebGLRenderer();
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	document.body.appendChild( renderer.domElement );
@@ -43,7 +45,7 @@
 	var laserBeam	= new THREEx.LaserBeam()
 	scene.add(laserBeam.object3d)
 	// laserBeam.object3d.position.x	= 2
-	var laserCooked	= new THREEx.LaserCooked(laserBeam)
+	var laserCooked	= new THREEx.LaserCooked(laserBeam,texture,scene)
 	onRenderFcts.push(function(delta, now){
 		laserCooked.update(delta, now)
 	})
